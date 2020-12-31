@@ -1,0 +1,248 @@
+html{
+    font-size: 100%;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+*,*::after,*::before{
+box-sizing: inherit;
+}
+body{
+margin: 0;
+padding: 0;
+font-family: 'Capriola', sans-serif;
+text-transform: capitalize;
+}
+h1,h2,h3,h4,h5{
+    font-weight: 400;
+    margin: 10px;
+
+}
+.background-container{
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    z-index: 4;
+    background: black;
+}
+.background-container::before{
+    content: ' ';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 3;
+    opacity: 0.7;
+    background-repeat: no-repeat;
+    background-position:50% 0;
+    background-image: url(images/pokemon.png);
+    background-size: cover;
+}
+.container{
+    position: relative;
+    height: 100vh;
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+nav{
+    width: 100%;
+    text-align: center;
+    margin-bottom: 20px;
+    position: absolute;
+    
+}
+
+nav img{
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    
+}
+.show_nav{
+    position: relative;
+    visibility: visible;
+    animation-name: moving;
+    animation-duration: 300ms;
+}
+@keyframes moving{
+    0%{
+        opacity: 0;
+    }
+    25%{
+        opacity: 0%;
+
+    }
+    50%{
+        opacity:50%
+    }
+    75%{
+        opacity:75%
+    }
+    100%{  
+        opacity: 100%;
+    }
+}
+nav #search-pokemon{
+border: 2px solid black;
+outline: none;
+border-radius: 30px;
+height: 30px;
+width: 320px;
+padding-left: 12px;
+}
+
+.card{
+    background-color: #DEFDE0;
+    display: inline-block;
+    text-align: center;
+    border-radius: 30px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.4), 0 6px 6px rgba(0,0,0,0.23);
+    border: 2px solid black;
+    margin-bottom: 40px;
+    opacity: 0;
+    transition:  500ms ease;
+    visibility: hidden;
+    position: absolute;
+    width: 330px;
+}
+.show_card{
+    opacity: 100%;
+    visibility: visible;
+    position: relative;
+}
+
+.card:hover{
+    box-shadow: 0 14px 28px rgba(0,0,0,0.7), 0 15px 15px rgba(0,0,0,0.22);
+}
+.card-img{
+    border-radius: 30px 30px 0px 0px;
+    
+}
+.card-img img{
+    width: 100%;
+    max-height: 300px;
+}
+.card-add-info{
+    display: grid;
+    grid-template-areas:"number number"
+                        "name name"
+                        "type xp" 
+                        "weight heigh";
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    background: linear-gradient(to bottom, rgba(73,155,234,1) 0%, rgba(32,124,229,1) 100%);
+    color: #fafafa;
+    border-radius: 0px 0px 30px 30px;
+}
+
+.card-add-info > .heigh{
+grid-area: heigh;
+}
+.card-add-info > .type{
+    grid-area: type;
+}
+.type > h5{
+background-color: red;
+border-radius: 30px;
+border: 1px solid #fafafa;
+
+}
+.height > h5,.xperience > h5, .weight > h5{
+    font-size: 18px;
+}
+.card-add-info > .xperience{
+    grid-area: xp;
+}
+.card-add-info  > .weight{
+    grid-area: weight;
+
+}
+.card-add-info  > .card-info-title {
+grid-area: name;
+background-color: rgba(0, 0, 0, 0.10);
+border-radius: 30px;
+display: inline-block;
+margin: 0px 25px 10px 25px; 
+}
+.card-add-info  > .card-number {
+grid-area: number;
+}
+.card-number h3{
+    background-color: rgba(0, 0, 0, 0.15);
+    padding: 5px 20px;
+    border-radius: 10px;
+    display: inline-block;
+    margin: 10px 0px 0px 0px;
+}
+.type , .xperience , .weight, .height{
+    background-color: rgba(0, 0, 0, 0.10);
+    padding: 5px 20px;
+   
+}
+@media screen and (max-width :1366px){
+    
+nav #search-pokemon{
+    width: 200px !important;
+}
+    .card{
+        width: 200px;
+        max-width: 560px;
+    }
+    .search img{
+        width: 220px;
+    }
+   
+    .card-info-title{
+        margin: 5px auto !important;
+        width: 160px;
+    }
+    .card-info-title h1 {
+        font-size: 14px;
+        margin: 5px;
+    }
+    
+    .card-add-info >div >h4{
+        font-size: 12px;
+    } 
+    .card-add-info >div >h5{
+        font-size: 12px;
+    }
+    
+    .type , .xperience , .weight, .height{
+        background-color: rgba(0, 0, 0, 0.10);
+        padding: 0px 0px;
+       
+    }
+    
+}
+@media screen and (max-width :320px){
+.card{
+    width: 170px;
+}
+nav #search-pokemon{
+    width: 183px !important;
+}
+.search img{
+    width: 150px;
+}
+.card-info-title{
+    margin: 5px auto !important;
+    width: 140px;
+}
+.card-info-title h1 {
+    font-size: 14px;
+    margin: 5px;
+}
+.card-add-info >div >h4{
+    font-size: 10px;
+} 
+.card-add-info >div >h5{
+    font-size: 10px;
+}
+}
+
+
